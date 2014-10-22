@@ -1,5 +1,5 @@
-﻿Build started 10/21/2014 5:05:54 PM.
-     1>Project "C:\Users\Evonee\Documents\CSE 167\Project_1\CSE167\Lab1\Cube.vcxproj" on node 2 (Build target(s)).
+﻿Build started 10/21/2014 7:27:02 PM.
+     1>Project "C:\Users\Evonee\Documents\CSE 167\Project_1\CSE167\Proj2\Lab1\Cube.vcxproj" on node 2 (Build target(s)).
      1>ClCompile:
          C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\bin\CL.exe /c /I"C:\glut\glut-3.7.6-bin" /ZI /nologo /W3 /WX- /Od /Oy- /D WIN32 /D _DEBUG /D _CONSOLE /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Fo"Debug\\" /Fd"Debug\vc120.pdb" /Gd /TP /analyze- /errorReport:prompt window.cpp
          window.cpp
@@ -12,9 +12,9 @@
          Debug\vector3.obj
          Debug\Vector4.obj
          Debug\window.obj
-         Cube.vcxproj -> C:\Users\Evonee\Documents\CSE 167\Project_1\CSE167\Lab1\Debug\Cube.exe
-     1>Done Building Project "C:\Users\Evonee\Documents\CSE 167\Project_1\CSE167\Lab1\Cube.vcxproj" (Build target(s)).
+         Cube.vcxproj -> C:\Users\Evonee\Documents\CSE 167\Project_1\CSE167\Proj2\Lab1\Debug\Cube.exe
+     1>Done Building Project "C:\Users\Evonee\Documents\CSE 167\Project_1\CSE167\Proj2\Lab1\Cube.vcxproj" (Build target(s)).
 
 Build succeeded.
 
-Time Elapsed 00:00:04.57
+Time Elapsed 00:00:10.89

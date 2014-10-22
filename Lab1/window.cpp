@@ -109,7 +109,7 @@ void Window::displayCallback()
   glLoadMatrixd(test.getPointer());
   glLoadMatrixd(cam->getGLMatrix());*/
 
-  /*Camera *cam1 = new Camera();
+ /* Camera *cam1 = new Camera();
   cam1->getMatrix().identity(); // IDEA: Try Globals thing again
   cam1->sete(0, 10, 10);
   cam1->setd(0, 0, 0);
@@ -179,15 +179,15 @@ void Window::displayCallback()
 
   for (int i = 0; i < len; i++)
   {
-	  index = h->getIndices(i);
+	  index = 3 * h->getIndices(i);
 	  r = h->getColors(index);
 	  g = h->getColors(index + 1);
 	  b = h->getColors(index + 2);
 	  vertex1 = h->getVertices(index);
 	  vertex2 = h->getVertices(index + 1);
 	  vertex3 = h->getVertices(index + 2);
-	  glVertex3f(vertex1, vertex2, vertex3); //Pass vertex to OpenGL
 	  glColor3f(r, g, b);                    //Set color
+	  glVertex3f(vertex1, vertex2, vertex3); //Pass vertex to OpenGL
   }
 
   glEnd();
