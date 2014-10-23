@@ -98,6 +98,15 @@ void Matrix4::setRow(int row, double val1, double val2, double val3, double val4
 	m[row][2] = val3;
 	m[row][3] = val4;
 }
+
+void Matrix4::setCol(int col, double val1, double val2, double val3, double val4)
+{
+	m[0][col] = val1;
+	m[1][col] = val2;
+	m[2][col] = val3;
+	m[3][col] = val4;
+}
+
 // set matrix to identity matrix
 void Matrix4::identity()
 {
@@ -170,45 +179,11 @@ void Matrix4::makeTranslate(double tx, double ty, double tz){
 }
 
 void Matrix4::print(string comment){
+	cout << comment<< endl;
 	for (int row = 0; row < 4; row++){
 		for (int col = 0; col < 4; col++){
-			cout << comment;
-			cout << m[row][col];
+			cout << m[row][col] << "\t";
 		}
-	}
-}
-
-void Matrix4::inverse()
-{
-	Matrix4 *t = new Matrix4();
-	Matrix4 *r = new Matrix4();
-
-	double x = m[0][3];
-	double y = m[1][3];
-	double z = m[2][3];
-	t->makeTranslate(x, y, z);
-	t->m[0][3] = -1 * t->m[0][3];
-	t->m[1][3] = -1 * t->m[1][3];
-	t->m[2][3] = -1 * t->m[2][3];
-	t->m[3][3] = -1 * t->m[3][3];
-
-	for (int row = 0; row < 4; row++)
-	{
-		for (int col = 0; col < 4; col++)
-		{
-			r->m[row][col] = m[row][col];
-		}
-	}
-	r->m[0][3] = 0;
-	r->m[1][3] = 0;
-	r->m[2][3] = 0;
-	r->transpose();
-	Matrix4 res = *r * *t;
-	for (int row = 0; row < 4; row++)
-	{
-		for (int col = 0; col < 4; col++)
-		{
-			m[row][col] = res.m[row][col];
-		}
+		cout << "\n" << endl;
 	}
 }

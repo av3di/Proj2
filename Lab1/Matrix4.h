@@ -23,6 +23,7 @@ class Matrix4
 	double get(int, int) const;
 	void set(int, int, double); 
 	void Matrix4::setRow(int row, double val1, double val2, double val3, double val4);
+	void setCol(int, double, double, double, double);
 	Vector4 operator*(const Vector4&);
 	void makeRotateX(double);
 	void makeRotateZ(double);
@@ -30,7 +31,6 @@ class Matrix4
 	void makeScale(double, double, double);
 	void makeTranslate(double, double, double);
 	void print(string);
-	void inverse();
 };
 
 #endif

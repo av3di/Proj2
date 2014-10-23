@@ -11,13 +11,16 @@
 #include "vector3.h"
 #include "Vector4.h"
 #include "Camera.h"
+#include "House.h"
 
 using namespace std;
 
 namespace Globals
 {
   Cube cube;
-  //Camera cam;
+  Camera cam1;
+  Camera cam2;
+  House h;
 };
 
 int main(int argc, char *argv[])
@@ -49,51 +52,37 @@ int main(int argc, char *argv[])
   glLightfv(GL_LIGHT0, GL_POSITION, position);
   glEnable(GL_LIGHTING);
   glEnable(GL_LIGHT0);
-  glDisable(GL_LIGHTING);
   
   // Install callback functions:
   glutDisplayFunc(Window::displayCallback);
   glutReshapeFunc(Window::reshapeCallback);
   glutIdleFunc(Window::idleCallback);
 
-  glutKeyboardFunc(Window::processNormalKeys);
-    
   // Initialize cube matrix:
   Globals::cube.getMatrix().identity();
-  //Globals::cam.getMatrix().identity();
-  glutMainLoop();
+  Globals::cam1.getMatrix().identity();
+  Globals::cam2.getMatrix().identity();
+  Globals::h.getMatrix().identity();
 
-	/* Test Vector3 class */
-	/*
-	Vector3 *test1 = new Vector3(5, -2, 9);
-	Vector3 *test2 = new Vector3(2, 10, 1);
-	(*test1 - *test2).print("test1 - test2 is: ");
-	(*test1 + *test2).print("test1 + test2 is: ");
-	test1->negate();
-	test1->print("test1 negated is: ");
-	test2->scale(3);
-	test2->print("test2 scaled by 3 is: ");
-	std::cout << "dot: " << test1->dot(*test2) << std::endl;
-	Vector3 cross = test1->cross(*test2);
-	cross.print("Cross vector is: ");
-	test1->print("test1 vector is: ");
-	std::cout << "test1 og length: " << test1->length() << std::endl;
-	test1->normalize();
-	std::cout << "test1 length after normalize: " << test1->length() << std::endl;
-	*/
-	/* Test Vector4 class */
-	/*
-	Vector4 *test1 = new Vector4(5, -2, 9, 21);
-	Vector4 *test2 = new Vector4(2, 10, 1, 25);
-	test1->print("test1 is: ");
-	test2->print("test2 is: ");
-	(*test1 - *test2).print("test1 - test2 is: ");
-	(*test1 + *test2).print("test1 + test2 is: ");
-	test1->dehomogenize();
-	test1->print("test1 dehomogenied is: ");
-	system("pause");
-	*/
-	
-  return 0;
+  // Construct the F1 Camera
+  Globals::cam1.sete(0, 10, 10);
+  Globals::cam1.setd(0, 0, 0);
+  Globals::cam1.setup(0, 1, 0);
+  Globals::cam1.constructMatrix();
+  Globals::cam1.inverse();
+
+  // Construct the F2 Camera
+  Globals::cam2.sete(-15, 5, 10);
+  Globals::cam2.setd(-5, 0, 0);
+  Globals::cam2.setup(0, 1, 0.5);
+
+  Globals::cam2.constructMatrix();
+  Globals::cam2.inverse();
+
+  // Process the keys pressed
+  glutKeyboardFunc(Window::processNormalKeys);
+  glutSpecialFunc(Window::processSpecialKeys);
+
+  glutMainLoop();
 }
 

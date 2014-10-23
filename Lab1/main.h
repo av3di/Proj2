@@ -2,10 +2,15 @@
 #define _MAIN_H_
 
 #include "Cube.h"
+#include "Camera.h"
+#include "House.h"
 
 namespace Globals
 {
     extern Cube cube;
+	extern Camera cam1;
+	extern Camera cam2;
+	extern House h;
 };
 
 #endif

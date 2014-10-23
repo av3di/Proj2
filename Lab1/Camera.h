@@ -6,7 +6,7 @@
 
 class Camera
 {
-private:
+public:
 	Vector3 e;    // Center of projection
 	Vector3 d;    // look at point
 	Vector3 up;   // up vector
@@ -15,11 +15,12 @@ private:
 public:
 	Camera();
 	~Camera();
-	GLdouble* getGLMatrix();
-	Matrix4 getMatrix();
+	Matrix4& getMatrix();
+	void constructMatrix();
 	void sete(double, double, double);
 	void setd(double, double, double);
 	void setup(double, double, double);
+	void Camera::inverse();
 
 };
 

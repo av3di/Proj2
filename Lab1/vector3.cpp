@@ -70,24 +70,16 @@ Vector3 Vector3::cross(const Vector3&v1)
 double Vector3::length() const
 {
 	// |v| = sqrt(vx2 + vy2 + vz2)
-	return(sqrt(x*x + y*y + z*z));
-	/*
-	double xsquare = this->getX() * this->getX();
-	double ysquare = this->getY() * this->getY();
-	double zsquare = this->getZ() * this->getZ();
-	return sqrt(xsquare + ysquare + zsquare);
-	*/
+	return (sqrt((x*x) + (y*y) + (z*z)));
 
 }
 
 void Vector3::normalize()
 {
-	double vx = this->getX() / this->length();
-	double vy = this->getY() / this->length();
-	double vz = this->getZ() / this->length();
-	this->setX(vx);
-	this->setY(vy);
-	this->setZ(vz);
+	double length = this->length();
+	this->x = this->x /length;
+	this->y = this->y / length;
+	this->z = this->z / length;
 }
 
 void Vector3::print(std::string comment)

@@ -44,7 +44,8 @@ indices ({ 0, 2, 3, 0, 1, 2,      // front face
 	28, 29, 30,             // front attic wall
 	31, 33, 34, 31, 32, 33,   // left slope
 	35, 37, 38, 35, 36, 37,   // right slope
-	39, 40, 41 })            // rear attic wall
+	39, 40, 41 }),            // rear attic wall
+model2world()
 {
 }
 
@@ -64,4 +65,9 @@ float House::getColors(int i)
 int House::getIndices(int i)
 {
 	return indices[i];
+}
+
+Matrix4& House::getMatrix()
+{
+	return model2world;
 }
