@@ -83,21 +83,27 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="Bunny.h" />
     <ClInclude Include="Camera.h" />
     <ClInclude Include="cube.h" />
+    <ClInclude Include="Dragon.h" />
     <ClInclude Include="House.h" />
     <ClInclude Include="main.h" />
     <ClInclude Include="Matrix4.h" />
+    <ClInclude Include="Model.h" />
     <ClInclude Include="vector3.h" />
     <ClInclude Include="Vector4.h" />
     <ClInclude Include="window.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="Bunny.cpp" />
     <ClCompile Include="Camera.cpp" />
     <ClCompile Include="cube.cpp" />
+    <ClCompile Include="Dragon.cpp" />
     <ClCompile Include="House.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="Matrix4.cpp" />
+    <ClCompile Include="Model.cpp" />
     <ClCompile Include="vector3.cpp" />
     <ClCompile Include="Vector4.cpp" />
     <ClCompile Include="window.cpp" />

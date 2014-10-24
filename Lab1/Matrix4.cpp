@@ -34,7 +34,7 @@ double* Matrix4::getPointer()
 }
 
 Matrix4 Matrix4::operator*(const Matrix4 &m2){
-	Matrix4 *tmp = new Matrix4();
+	Matrix4 tmp;
 	Matrix4 *first = this;
 	double sum = 0;
 	for (int c = 0; c < 4; c++){
@@ -42,11 +42,11 @@ Matrix4 Matrix4::operator*(const Matrix4 &m2){
 			for (int k = 0; k < 4; k++){
 				sum = sum + first->m[c][k] * m2.m[k][d];
 			}
-			tmp->m[c][d] = sum;
+			tmp.m[c][d] = sum;
 			sum = 0;
 		}
 	}
-	return *tmp;
+	return tmp;
 }
 
 Vector4 Matrix4::operator*(const Vector4& v){

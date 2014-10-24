@@ -12,6 +12,8 @@
 #include "Vector4.h"
 #include "Camera.h"
 #include "House.h"
+#include "Bunny.h"
+#include "Dragon.h"
 
 using namespace std;
 
@@ -21,6 +23,8 @@ namespace Globals
   Camera cam1;
   Camera cam2;
   House h;
+  Bunny hop;
+  Dragon draco;
 };
 
 int main(int argc, char *argv[])
@@ -63,6 +67,8 @@ int main(int argc, char *argv[])
   Globals::cam1.getMatrix().identity();
   Globals::cam2.getMatrix().identity();
   Globals::h.getMatrix().identity();
+  Globals::hop.getMatrix().identity();
+  Globals::draco.getMatrix().identity();
 
   // Construct the F1 Camera
   Globals::cam1.sete(0, 10, 10);

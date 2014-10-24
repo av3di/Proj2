@@ -1,5 +1,5 @@
 #include "House.h"
-
+#include <GL/glut.h>
 
 House::House() : nVerts(42), 
 // These are the x,y,z coordinates of the vertices of the triangles
@@ -44,30 +44,41 @@ indices ({ 0, 2, 3, 0, 1, 2,      // front face
 	28, 29, 30,             // front attic wall
 	31, 33, 34, 31, 32, 33,   // left slope
 	35, 37, 38, 35, 36, 37,   // right slope
-	39, 40, 41 }),            // rear attic wall
-model2world()
+	39, 40, 41 })          // rear attic wall
 {
 }
-
 
 House::~House()
 {
 }
 
-float House::getVertices(int i)
+void House::draw()
 {
-	return vertices[i];
-}
-float House::getColors(int i)
-{
-	return colors[i];
-}
-int House::getIndices(int i)
-{
-	return indices[i];
-}
+	glBegin(GL_TRIANGLES);
 
-Matrix4& House::getMatrix()
-{
-	return model2world;
+	int len = 60;
+	int index = -1;
+	float x;
+	float y;
+	float z;
+	float r;
+	float g;
+	float b;
+
+	for (int i = 0; i < len; i++)
+	{
+		index = 3 * indices[i];
+		r = colors[index];
+		g = colors[index + 1];
+		b = colors[index + 2];
+		x = vertices[index];
+		y = vertices[index + 1];
+		z = vertices[index + 2];
+		glColor3f(r, g, b);                    //Set color
+		glVertex3f(x, y, z); //Pass vertex to OpenGL
+	}
+
+	glEnd();
+	glFlush();
+	glutSwapBuffers();
 }

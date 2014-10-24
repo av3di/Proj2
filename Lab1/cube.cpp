@@ -1,57 +1,63 @@
 #include "Cube.h"
 #include "Matrix4.h"
+#include <GL/glut.h>
 
 using namespace std;
 
 
 Cube::Cube()
 {
- // spinClockwise = true;
-  angle = 0.0;
-  counter = true;
 }
 
-Matrix4& Cube::getMatrix()
+void Cube::draw()
 {
-  return model2world;
-}
+	// Draw all six faces of the cube:
+	glBegin(GL_QUADS);
+	glColor3f(0.0, 1.0, 0.0);		// This makes the cube green; the parameters are for red, green and blue.
+	// To change the color of the other faces you will need to repeat this call before each face is drawn.
+	// Draw front face:
+	glNormal3f(0.0, 0.0, 1.0);
+	glVertex3f(-5.0, 5.0, 5.0);
+	glVertex3f(5.0, 5.0, 5.0);
+	glVertex3f(5.0, -5.0, 5.0);
+	glVertex3f(-5.0, -5.0, 5.0);
 
-void Cube::rotate(double a)
-{
-	Matrix4 *rotation = new Matrix4();
-	rotation->makeRotateZ(a);
-	model2world = *rotation * model2world;
-}
-void Cube::scale(double x, double y, double z)
-{
-	Matrix4 *scaling = new Matrix4;
-	scaling->makeScale(x, y, z);
-	this->model2world = *scaling * this->model2world;
-}
+	// Draw left side:
+	glNormal3f(-1.0, 0.0, 0.0);
+	glVertex3f(-5.0, 5.0, 5.0);
+	glVertex3f(-5.0, 5.0, -5.0);
+	glVertex3f(-5.0, -5.0, -5.0);
+	glVertex3f(-5.0, -5.0, 5.0);
 
-void Cube::translate(double x, double y, double z)
-{
-	Matrix4 *translation = new Matrix4();
-	translation->makeTranslate(x, y, z);
-	this->model2world = *translation * this->model2world;
-}
+	// Draw right side:
+	glNormal3f(1.0, 0.0, 0.0);
+	glVertex3f(5.0, 5.0, 5.0);
+	glVertex3f(5.0, 5.0, -5.0);
+	glVertex3f(5.0, -5.0, -5.0);
+	glVertex3f(5.0, -5.0, 5.0);
 
-void Cube::spin(double deg)   // deg is in degrees
-{	
-	Matrix4 testing;
-	testing.makeRotateY(counter ? deg : -1 * deg);
-	angle += deg;
-	if (angle > 360.0 || angle < -360.0) angle = 0.0;
-	model2world = model2world * testing; // This creates the matrix to rotate the cube}
-	
-}
+	// Draw back face:
+	glNormal3f(0.0, 0.0, -1.0);
+	glVertex3f(-5.0, 5.0, -5.0);
+	glVertex3f(5.0, 5.0, -5.0);
+	glVertex3f(5.0, -5.0, -5.0);
+	glVertex3f(-5.0, -5.0, -5.0);
 
-bool Cube::getCounter()
-{
-	return this->counter;
-}
+	// Draw top side:
+	glNormal3f(0.0, 1.0, 0.0);
+	glVertex3f(-5.0, 5.0, 5.0);
+	glVertex3f(5.0, 5.0, 5.0);
+	glVertex3f(5.0, 5.0, -5.0);
+	glVertex3f(-5.0, 5.0, -5.0);
 
-void Cube::setCounter(bool c)
-{
-	this->counter = c;
+	// Draw bottom side:
+	glNormal3f(0.0, -1.0, 0.0);
+	glVertex3f(-5.0, -5.0, -5.0);
+	glVertex3f(5.0, -5.0, -5.0);
+	glVertex3f(5.0, -5.0, 5.0);
+	glVertex3f(-5.0, -5.0, 5.0);
+	glEnd();
+
+	glFlush();
+	glutSwapBuffers();
 }

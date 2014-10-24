@@ -25,28 +25,24 @@ void Camera::constructMatrix()
 	zaxis = (e - d);
 	zaxis.normalize();
 	c.setCol(2, zaxis.getX(), zaxis.getY(), zaxis.getZ(), 0);
-	//c.setRow(2, zaxis.getX(), zaxis.getY(), zaxis.getZ(), 0);
 
 	// Find x-axis
 	xaxis = up.cross(zaxis);
 	xaxis.normalize();
 	c.setCol(0, xaxis.getX(), xaxis.getY(), xaxis.getZ(), 0);
-	//c.setRow(0, xaxis.getX(), xaxis.getY(), xaxis.getZ(), 0);
 
 	// Find y-axis
 
 	yaxis = zaxis.cross(xaxis);
 	c.setCol(1, yaxis.getX(), yaxis.getY(), yaxis.getZ(), 0);
-	//c.setRow(1, yaxis.getX(), yaxis.getY(), yaxis.getZ(), 0);
 
 	//Set last column
 	c.setCol(3, e.getX(), e.getY(), e.getZ(), 1);
-	//c.setRow(3, e.getX(), e.getY(), e.getZ(), 0);
 }
 
 void Camera::sete(double x, double y, double z)
 {
-	Vector3 *a = new Vector3(x, y, z); //w 1 for point
+	Vector3 *a = new Vector3(x, y, z);
 	e = *a;
 }
 void Camera::setd(double x, double y, double z)
