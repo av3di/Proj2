@@ -63,6 +63,8 @@ void Window::reshapeCallback(int w, int h)
   gluPerspective(60.0, double(width)/(double)height, 1.0, 1000.0); // set perspective projection viewing frustum
   glTranslatef(0, 0, -20);    // move camera back 20 units so that it looks at the origin (or else it's in the origin)
   glMatrixMode(GL_MODELVIEW);
+  Globals::hop.findMinMax();
+  Globals::draco.findMinMax();
 }
 
 //----------------------------------------------------------------------------
@@ -163,6 +165,7 @@ void Window::processNormalKeys(unsigned char key, int x, int y){
 		break;
 	case 'r':
 		currentM->getMatrix().makeRotateY(1.0);
+		//currentM->reset();
 		break;
 	}
 }

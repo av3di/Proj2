@@ -14,6 +14,7 @@ public:
 	~Bunny();
 	virtual void draw();
 	void parseBunnyFile();
+	void findMinMax();
 };
 
 #endif

@@ -14,6 +14,7 @@ public:
 	~Dragon();
 	virtual void draw();
 	void parseDragonFile();
+	void findMinMax();
 };
 
 #endif

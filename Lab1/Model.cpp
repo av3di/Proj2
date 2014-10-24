@@ -59,3 +59,14 @@ void Model::changeCounter()
 {
 	this->counter = !(this->counter);
 }
+
+void Model::reset()
+{
+	/* Get All values from last column and multiply by negative one, pass new values to make translate and multiply*/
+	Matrix4 translation;
+	double x = (-1) * this->getMatrix().get(0, 3);
+	double y = (-1) * this->getMatrix().get(1, 3);
+	double z = (-1) * this->getMatrix().get(2, 3);
+	translation.makeTranslate(x, y, z);
+	this->model2world = translation * this->model2world;
+}
