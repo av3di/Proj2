@@ -13,6 +13,7 @@ using namespace std;
 
 int Window::width  = 512;   // set window width in pixels here
 int Window::height = 512;   // set window height in pixels here
+
 int Window::fkey = 1;  // If 1, show cube, 2->show 1st cam, 3->show 2nd cam
 
 
@@ -60,11 +61,9 @@ void Window::reshapeCallback(int w, int h)
   glViewport(0, 0, w, h);  // set new viewport size
   glMatrixMode(GL_PROJECTION);
   glLoadIdentity();
-  gluPerspective(60.0, double(width)/(double)height, 1.0, 1000.0); // set perspective projection viewing frustum
-  glTranslatef(0, 0, -20);    // move camera back 20 units so that it looks at the origin (or else it's in the origin)
+  gluPerspective(Globals::viewAngle, double(width)/(double)height, 1.0, 1000.0); // set perspective projection viewing frustum
+  glTranslatef(0, 0, Globals::camZ);    // move camera back 20 units so that it looks at the origin (or else it's in the origin)
   glMatrixMode(GL_MODELVIEW);
-  Globals::hop.findMinMax();
-  Globals::draco.findMinMax();
 }
 
 //----------------------------------------------------------------------------

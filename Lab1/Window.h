@@ -5,7 +5,8 @@
 class Window	  // OpenGL output window related routines
 {
   public:
-    static int width, height, fkey; 	// window size, fkey signifies what F key was pressed
+	  static int width, height, fkey; // window size, fkey signifies what F key was pressed
+	
 
     static void idleCallback(void);
     static void reshapeCallback(int, int);

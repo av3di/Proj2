@@ -8,6 +8,8 @@ class Dragon : public Model
 {
 protected:
 	double dp[601500];
+	int xyzrows = 100250;
+	int dpLength = 601500;
 
 public:
 	Dragon();

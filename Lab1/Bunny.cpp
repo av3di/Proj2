@@ -46,7 +46,7 @@ void Bunny::parseBunnyFile()
 	xyzf = fopen("bunny.xyz", "r");
 
 	// Bunny has 215,682 doubles
-	for (int count = 0; count < 215682; count++)
+	for (int count = 0; count < bpLength; count++)
 	{
 		fscanf(xyzf, "%lf", &d);
 		bp[count] = d;
@@ -58,7 +58,7 @@ void Bunny::findMinMax()
 	double xMax = 0, xMin = 100, yMax= 0, yMin= 100, zMax= 0, zMin = 100;
 	int row = 0;
 	int count = 0;
-	for (int row = 0; row < 35947; row++)
+	for (int row = 0; row < xyzrows; row++)
 	{
 		//Find min and max x
 		if (bp[count] < xMin)
@@ -99,12 +99,14 @@ void Bunny::findMinMax()
 	Matrix4 printTranslate;
 	printTranslate.makeTranslate(midx * -1, midy * -1, midz * -1);
 	printTranslate.print("Translate matrix is : ");
+
 	cout << "\n " << endl;
 
 	this->model2world = printTranslate * this->model2world;
 
 	// Scale
-	double factor = (tan((30 * M_PI) / 180) * 20) / (yMax - yMin);
+	double theta = (Globals::viewAngle / 2) / 180 * M_PI;
+	double factor = tan(theta) * (abs(Globals::camZ) * 2) / (xMax - xMin);
 	Matrix4 printScale;
 	printScale.makeScale(factor, factor, factor);
 	printScale.print("Scale matrix is: ");

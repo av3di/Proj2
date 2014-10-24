@@ -1,6 +1,7 @@
 #include "Dragon.h"
 
 #include <GL/glut.h>
+#include "main.h"
 
 using namespace std;
 
@@ -35,7 +36,7 @@ void Dragon::draw()
 	Vector3 normal;
 	glBegin(GL_POINTS);
 	int count = 0;
-	for (int row = 0; row < 100250; row++)
+	for (int row = 0; row < xyzrows; row++)
 	{
 		normal.setX(dp[count + 3]);
 		normal.setY(dp[count + 4]);
@@ -56,7 +57,7 @@ void Dragon::findMinMax()
 	double xMax = 0, xMin = 100, yMax = 0, yMin = 100, zMax = 0, zMin = 100;
 	int row = 0;
 	int count = 0;
-	for (int row = 0; row < 100250; row++)
+	for (int row = 0; row < xyzrows; row++)
 	{
 		//Find min and max x
 		if (dp[count] < xMin)
@@ -101,7 +102,8 @@ void Dragon::findMinMax()
 	this->model2world = printTranslate * this->model2world;
 
 	// Scale
-	double factor = (tan((30 * M_PI) / 180) * 20) / (xMax - xMin);
+	double theta = (Globals::viewAngle / 2) / 180 * M_PI;
+	double factor = tan(theta) * (abs(Globals::camZ) * 2) / (xMax - xMin);
 	Matrix4 printScale;
 	printScale.makeScale(factor, factor, factor);
 	printScale.print("Scale matrix is: ");

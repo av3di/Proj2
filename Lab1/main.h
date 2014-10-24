@@ -15,6 +15,8 @@ namespace Globals
 	extern House h;
 	extern Bunny hop;
 	extern Dragon draco;
-};
+	extern double viewAngle;
+	extern int camZ;
+}
 
 #endif

@@ -8,6 +8,8 @@ class Bunny : public Model
 {
 protected:
 	double bp[215682];
+	int xyzrows = 35947;
+	int bpLength = 215682;
 
 public:
 	Bunny();

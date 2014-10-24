@@ -25,6 +25,8 @@ namespace Globals
   House h;
   Bunny hop;
   Dragon draco;
+  double viewAngle = 60.0;
+  int camZ = -20;
 };
 
 int main(int argc, char *argv[])
@@ -84,6 +86,9 @@ int main(int argc, char *argv[])
 
   Globals::cam2.constructMatrix();
   Globals::cam2.inverse();
+
+  Globals::hop.findMinMax();
+  Globals::draco.findMinMax();
 
   // Process the keys pressed
   glutKeyboardFunc(Window::processNormalKeys);
