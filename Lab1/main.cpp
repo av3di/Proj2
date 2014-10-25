@@ -64,13 +64,24 @@ int main(int argc, char *argv[])
   glutReshapeFunc(Window::reshapeCallback);
   glutIdleFunc(Window::idleCallback);
 
-  // Initialize cube matrix:
+  // Initialize all matrices:
   Globals::cube.getMatrix().identity();
   Globals::cam1.getMatrix().identity();
   Globals::cam2.getMatrix().identity();
   Globals::h.getMatrix().identity();
   Globals::hop.getMatrix().identity();
   Globals::draco.getMatrix().identity();
+
+  // Parse the xyz files and store coords
+  Globals::hop.parseFile("bunny.xyz");
+  Globals::draco.parseFile("dragon.xyz");
+
+  // Translate and scale the point models
+  Globals::hop.moveToOrigin();
+  Globals::hop.fitToWindow();
+
+  Globals::draco.moveToOrigin();
+  Globals::draco.fitToWindow();
 
   // Construct the F1 Camera
   Globals::cam1.sete(0, 10, 10);
@@ -86,9 +97,6 @@ int main(int argc, char *argv[])
 
   Globals::cam2.constructMatrix();
   Globals::cam2.inverse();
-
-  Globals::hop.findMinMax();
-  Globals::draco.findMinMax();
 
   // Process the keys pressed
   glutKeyboardFunc(Window::processNormalKeys);

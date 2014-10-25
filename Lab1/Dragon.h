@@ -1,22 +1,15 @@
 #ifndef _DRAGON_H_
 #define _DRAGON_H_
 
-#include "Model.h"
+#include "PointModel.h"
 
 
-class Dragon : public Model
+class Dragon : public PointModel
 {
-protected:
-	double dp[601500];
-	int xyzrows = 100250;
-	int dpLength = 601500;
-
 public:
 	Dragon();
 	~Dragon();
 	virtual void draw();
-	void parseDragonFile();
-	void findMinMax();
 };
 
 #endif

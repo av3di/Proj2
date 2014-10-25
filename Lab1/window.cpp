@@ -22,8 +22,8 @@ int Window::fkey = 1;  // If 1, show cube, 2->show 1st cam, 3->show 2nd cam
 void Window::idleCallback()
 {
 	Globals::cube.spin(0.1);   // rotate cube; if it spins too fast try smaller values and vice versa
-	Globals::hop.spin(0.5);
-	Globals::draco.spin(0.5);
+	//Globals::hop.spin(0.5);
+	//Globals::draco.spin(0.5);
 	displayCallback();         // call display routine to show the cube
 }
 
