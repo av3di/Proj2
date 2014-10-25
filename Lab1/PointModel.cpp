@@ -3,12 +3,6 @@
 
 PointModel::PointModel()
 {
-	/*v_minmax.push_back(100);
-	v_minmax.push_back(-100);
-	v_minmax.push_back(100);
-	v_minmax.push_back(-100);
-	v_minmax.push_back(100);
-	v_minmax.push_back(-100);*/
 }
 
 
@@ -40,11 +34,9 @@ void PointModel::findMinMax()
 	double xmax = -100, ymax = -100, zmax = -100;
 	int row = 0;
 	int count = 0;
-	std::cout << "in findmax()" << endl;
+
 	for (int row = 0; row < xyzrows; row++)
 	{
-		if (count == 0)
-		std::cout << "v_xyz[0] is:" << v_xyz[0] << endl;
 		//Find min and max x
 		if (v_xyz[count] < xmin)
 			xmin = v_xyz[count];
@@ -85,7 +77,6 @@ void PointModel::findMinMax()
 
 void PointModel::moveToOrigin()
 {
-	cout << "in move to origin" << endl;
 	findMinMax();
 	double midx = (v_minmax[0] + v_minmax[1]) / 2;
 	double midy = (v_minmax[2] + v_minmax[3]) / 2;

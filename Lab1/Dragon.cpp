@@ -8,7 +8,6 @@ using namespace std;
 Dragon::Dragon()
 {
 	xyzrows = 100250;
-	cout << "in constructor " << endl;
 }
 
 
